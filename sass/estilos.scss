@@ -1,0 +1,326 @@
+@import "variables.scss";
+
+// Header Banner
+header {
+    height: 440px;
+    box-shadow: 0 .3rem 1rem 0 rgba(0, 0, 0, .3);
+    
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100%;  
+        height: 0; 
+        background-color: $bg-color; 
+        box-shadow: 0 .5rem 1rem 0 rgba(0,0,0,.3);
+        transition: all .3s linear;
+
+        .nav-content {
+            
+            .icon-menu {
+                @include altura-nav (); // heigth: 60px              
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                font-size: 1.8rem;
+
+                i { 
+                    color: $color-text3;
+                    cursor: pointer; 
+                }
+            }
+            
+            ul {
+                list-style: none;
+                height: 380px;
+                margin-left: 1000px;
+                background-color: $bg-color;
+                transition: all .3s ease-in-out;
+                
+                li {
+                    text-align: center;
+                    padding: 1rem 0;
+                    transition: all .5s linear;
+                    
+                    a {
+                        text-decoration: none;
+                        font-size: 1.2rem;
+                        font-family: 'Roboto Condensed', sans-serif;
+                        color: $color-text3;
+                        letter-spacing: .1rem;
+                        transition: all .4s ease-in-out;
+                    }
+                    a:hover {
+                        border-bottom: 2px solid $color-text3;
+                        padding-bottom: 1rem;
+                    } 
+                }
+                li:hover { background-color: rgba(204, 204, 204, 0.349); }
+            }
+            .menu-off { margin-left: 0; } //Clase agregada con JQuery 
+        }
+    }
+
+    .nit {
+        position: absolute;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+        height: 440px;
+        transition: all .8s ease-in-out;
+
+        a {
+            text-decoration: none;
+            font-size: 5rem;
+            color: $color-text3;
+            padding-bottom: .2rem;
+            
+            strong {
+                color: #FF3636;
+            }
+        }
+    }
+
+    img {
+        width: 100%;
+        height: 440px;
+    }
+
+    .header-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 440px;
+        background: linear-gradient(to right, rgba(0,0,0,.6),rgba(0,0,0,.3));
+    }
+}
+@media (min-width:992px) { // Responsive Full Scream
+    header {
+
+        nav {
+            
+            .nav-content {
+                display: flex;
+                
+                ul {
+                    display: flex;
+                    justify-content: space-around;
+                    margin-left: 0;
+                    background: transparent;
+                    
+                    li {
+                        
+                        a:hover {
+                            border-top: 2px solid $color-text3;
+                            padding-top: 1rem;
+                            border-bottom: none;
+                        }
+                    }
+                    li:hover { background-color: transparent; }
+                }
+            }
+        }
+    }  
+}
+
+// Main Contenido principal
+main {
+    padding: 5rem 0;           
+
+    article {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        text-align: justify;
+        
+        div {
+
+            h3:first-letter {
+                font-size: 3rem;
+                margin-left: -.2rem;
+                color: $bg-color;
+            }     
+        }
+        
+        aside {
+
+            div {
+
+                img {   
+                    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+                    box-shadow: 0 .3rem .5rem 0 rgba(0, 0, 0, .3);
+                    transition: all .5s ease-in-out;
+                }
+                img:hover {
+                    transform: scale(1.05);   
+                }
+            }
+
+            button {
+                display: block !important;
+                margin-left: auto !important;
+                color: white !important;
+                background-color: $bg-color !important;
+                box-shadow: 0 .2rem .5rem 0 rgba(0, 0, 0, .3);
+                cursor: pointer;
+            }
+            button:hover {
+                opacity: .9;
+                box-shadow: 0 .3rem .5rem 0 rgba(0, 0, 0, .3);
+            }
+        }
+    }
+}
+
+// Modal
+.modal-group {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .3);
+    display: none;
+
+    .modal-flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        .modal-content {
+            width: 80%;
+            animation: modal 1s ease-in-out alternate;
+
+            .modal-header {
+
+                span {
+                    font-size: 2.5rem;
+                    cursor: pointer;
+                }
+            }
+        }
+        @keyframes modal {
+            from {
+                top: -330px;
+                opacity: 0;
+            }
+            to {
+                top: 0;
+                opacity: 1;
+            }
+        }
+    }
+}
+@media (min-width:992px) { // Responsive Full Scream
+    .modal-group {
+
+        .modal-flex {
+
+            .modal-content {
+                width: 50%;
+            }
+        }
+    }
+}
+
+// Autores
+section {
+
+    .authors-content {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+
+        .card {
+            text-align: center;
+            margin: 3rem 0;
+            border: 1px solid $bg-color;
+            box-shadow: 0 .5rem 2rem 0 rgba(0, 0, 0, .3);
+
+            img {
+                position: relative;
+                bottom: 20px;
+                width: 300px;
+                height: 200px;
+                border: 1px solid black;   
+                border-radius: 2%;
+            }
+            
+            i {
+                font-size: 2rem;
+                color: $bg-color;
+
+                span {
+                    font-size: 1.2rem;
+                }
+            }
+
+            p {
+                display: none;
+                margin: 0;
+            }
+
+            input[type=button] {
+                @include botones();
+            }
+            input[type=button]:hover {
+                @include botones-hover();
+            }
+        }
+    }
+}
+
+// Informacion
+.info-content {
+    padding: 5rem 0;
+       
+    .card {
+        box-shadow: 0 .5rem 1rem 0 rgba(0, 0, 0, .3);
+        
+        .icons-info {
+            position: relative;
+            top: 22px;
+            z-index: 2;
+
+            a {
+            
+                i {
+                    font-size: 18px;
+                    width: 3rem;
+                    height: 3rem;
+                    line-height: 3rem;
+                    color: $color-text3;
+                    margin: 0 .2rem;
+                    border-radius: 100%;
+                    box-shadow: 0 .5rem 1rem 0 rgba(0, 0, 0, .3);
+                }
+            }
+            
+            .fa-facebook-f {              
+                background-color: #41579a;
+            }
+            
+            .fa-instagram {
+                background-color: #E34514;
+            }
+            
+            .fa-twitter {
+                background-color: #5EA9DD;
+            }
+            
+            .fa-whatsapp {
+                background-color: #4dc247;
+            }    
+        }
+    }
+}
+
+// Footer
+footer {
+    background-color: $bg-color;
+}

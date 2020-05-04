@@ -1,0 +1,30 @@
+// Variables
+$color-text2: black;
+$color-text3: white;
+$bg-color: #556CFF;
+
+// Mixins
+@mixin alineacion-V {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin altura-nav {
+    height: 60px;
+}
+
+@mixin botones {
+    color: $color-text3;
+    width: 120px;
+    margin: 2rem auto;
+    background-color: $bg-color;
+    box-shadow: 0 .2rem .2rem 0 rgba(0, 0, 0, .3);
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+@mixin botones-hover {
+    box-shadow: 0 .3rem .5rem 0 rgba(0, 0, 0, .3);
+}
+
